@@ -1,0 +1,29 @@
+{
+  "key": "sequenceDiagram",
+  "value": [
+    {
+      "id": "動画ファイル管理",
+      "value": "{\"mermaid\":\"sequenceDiagram\\n    User->>Frontend: 動画リスト画面にアクセス\\n    Frontend->>Backend: 動画リスト取得リクエスト\\n    Backend->>DB: 動画メタデータ取得クエリ\\n    DB-->>Backend: 動画メタデータ\\n    Backend->>Azure Blob Storage: サムネイル画像URL取得\\n    Azure Blob Storage-->>Backend: サムネイル画像URL\\n    Backend-->>Frontend: 動画リストデータ\\n    Frontend-->>User: 動画リスト表示\\n    User->>Frontend: 動画選択\\n    Frontend->>Backend: 動画詳細情報リクエスト\\n    Backend->>DB: 動画詳細データ取得クエリ\\n    DB-->>Backend: 動画詳細データ\\n    Backend->>Azure Blob Storage: 動画ストリーミングURL取得\\n    Azure Blob Storage-->>Backend: 動画ストリーミングURL\\n    Backend-->>Frontend: 動画詳細情報と再生URL\\n    Frontend-->>User: 動画再生画面表示\\n    User->>Frontend: 再生開始\\n    Frontend->>Backend: 視聴開始イベント送信\\n    Backend->>DB: 視聴履歴記録\\n    DB-->>Backend: 記録完了\\n    Backend-->>Frontend: 視聴開始確認\\n    Frontend->>Azure Blob Storage: 動画ストリーミング要求\\n    Azure Blob Storage-->>Frontend: 動画ストリーム\\n    Frontend-->>User: 動画再生\"}"
+    },
+    {
+      "id": "動画視聴",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    User->>Frontend: ログイン画面にアクセス\\n    Frontend->>Backend: 認証リクエスト送信\\n    Backend->>DB: ユーザー情報照会\\n    DB->>Backend: ユーザー情報返却\\n    Backend->>Backend: パスワード検証\\n    Backend->>Frontend: 認証結果返却\\n    Frontend->>User: ログイン結果表示\\n    alt 認証成功\\n        Frontend->>User: メイン画面表示\\n    else 認証失敗\\n        Frontend->>User: エラーメッセージ表示\\n    end\"\n}"
+    },
+    {
+      "id": "セキュリティ",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    User->>Frontend: 動画リストページにアクセス\\n    Frontend->>Backend: 動画リスト取得リクエスト\\n    Backend->>DB: 動画メタデータ取得クエリ\\n    DB->>Backend: 動画メタデータ返却\\n    Backend->>Frontend: 動画リスト返却\\n    Frontend->>User: 動画リスト表示\\n    User->>Frontend: 動画選択\\n    Frontend->>Backend: 動画詳細情報リクエスト\\n    Backend->>DB: 動画詳細情報取得クエリ\\n    DB->>Backend: 動画詳細情報返却\\n    Backend->>Frontend: 動画詳細情報返却\\n    Frontend->>User: 動画再生画面表示\\n    User->>Frontend: 再生開始\\n    Frontend->>Backend: 視聴カウント更新リクエスト\\n    Backend->>DB: 視聴回数更新クエリ\\n    DB->>Backend: 更新完了通知\\n    Backend->>Frontend: 視聴カウント更新完了通知\\n    Frontend->>User: 動画再生\"\n}"
+    },
+    {
+      "id": "パフォーマンス",
+      "value": "{\"mermaid\":\"sequenceDiagram\\n    User->>Frontend: ログイン画面にアクセス\\n    Frontend->>Backend: 認証リクエスト送信\\n    Backend->>DB: ユーザー情報照会\\n    DB->>Backend: ユーザー情報返却\\n    Backend->>Frontend: 認証結果返却\\n    Frontend->>User: ログイン結果表示\\n    User->>Frontend: メイン画面表示リクエスト\\n    Frontend->>Backend: 動画リスト取得リクエスト\\n    Backend->>DB: 動画メタデータ取得\\n    DB->>Backend: 動画メタデータ返却\\n    Backend->>Frontend: 動画リスト返却\\n    Frontend->>User: 動画リスト表示\\n    User->>Frontend: 動画再生リクエスト\\n    Frontend->>Backend: 動画ストリーミングリクエスト\\n    Backend->>Azure Blob Storage: 動画ファイル取得\\n    Azure Blob Storage->>Backend: 動画ファイル返却\\n    Backend->>Frontend: 動画ストリーム送信\\n    Frontend->>User: 動画再生\\n    Backend->>DB: 視聴回数更新\\n    DB->>Backend: 更新完了通知\"}"
+    },
+    {
+      "id": "ユーザビリティ",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    フロントエンド->>バックエンド: 認証リクエスト送信\\n    バックエンド->>データベース: ユーザー情報を照会\\n    データベース-->>バックエンド: ユーザー情報を返却\\n    バックエンド->>バックエンド: 認証情報を検証\\n    バックエンド->>バックエンド: JWTトークンを生成\\n    バックエンド-->>フロントエンド: JWTトークンを返却\\n    フロントエンド->>フロントエンド: トークンを保存\\n    フロントエンド->>バックエンド: 動画リスト取得リクエスト\\n    バックエンド->>データベース: 動画メタデータを取得\\n    データベース-->>バックエンド: 動画メタデータを返却\\n    バックエンド-->>フロントエンド: 動画リストを返却\\n    フロントエンド->>フロントエンド: 動画リストを表示\\n    フロントエンド->>バックエンド: 動画再生リクエスト\\n    バックエンド->>Azure Blob Storage: 動画ファイルを取得\\n    Azure Blob Storage-->>バックエンド: 動画ファイルを返却\\n    バックエンド-->>フロントエンド: 動画ストリームを送信\\n    フロントエンド->>フロントエンド: 動画を再生\\n    フロントエンド->>バックエンド: 視聴履歴を送信\\n    バックエンド->>データベース: 視聴履歴を保存\\n    データベース-->>バックエンド: 保存完了を通知\\n    バックエンド-->>フロントエンド: 処理完了を通知\"\n}"
+    },
+    {
+      "id": "システム管理",
+      "value": "{\"mermaid\":\"sequenceDiagram\\n    User->>Frontend: アクセス\\n    Frontend->>Backend: 認証要求\\n    Backend->>DB: ユーザー情報確認\\n    DB->>Backend: 認証結果\\n    Backend->>Frontend: トークン発行\\n    Frontend->>User: ログイン完了\\n    User->>Frontend: 動画リスト要求\\n    Frontend->>Backend: 動画データ要求\\n    Backend->>DB: 動画情報取得\\n    DB->>Backend: 動画データ\\n    Backend->>Frontend: 動画リスト送信\\n    Frontend->>User: 動画リスト表示\\n    User->>Frontend: 動画再生要求\\n    Frontend->>Backend: ストリーミング要求\\n    Backend->>Azure Blob Storage: 動画ファイル取得\\n    Azure Blob Storage->>Backend: 動画ストリーム\\n    Backend->>Frontend: 動画ストリーミング\\n    Frontend->>User: 動画再生\\n    Backend->>DB: 視聴履歴記録\\n    DB->>Backend: 記録完了\"}"
+    }
+  ]
+}

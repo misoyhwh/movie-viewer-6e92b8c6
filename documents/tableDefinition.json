@@ -1,0 +1,325 @@
+{
+  "key": "tableDefinition",
+  "value": [
+    {
+      "id": "TAB-001",
+      "table": "videos",
+      "column": "id",
+      "dataType": "uuid",
+      "regulation": "PRIMARY KEY",
+      "defaultValue": "gen_random_uuid()",
+      "foreignKey": "",
+      "description": "動画の一意識別子"
+    },
+    {
+      "id": "TAB-002",
+      "table": "videos",
+      "column": "title",
+      "dataType": "text",
+      "regulation": "NOT NULL",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "動画のタイトル"
+    },
+    {
+      "id": "TAB-003",
+      "table": "videos",
+      "column": "description",
+      "dataType": "text",
+      "regulation": "",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "動画の説明文"
+    },
+    {
+      "id": "TAB-004",
+      "table": "videos",
+      "column": "file_path",
+      "dataType": "text",
+      "regulation": "NOT NULL",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "Azure Blob Storage上の動画ファイルパス"
+    },
+    {
+      "id": "TAB-005",
+      "table": "videos",
+      "column": "thumbnail_path",
+      "dataType": "text",
+      "regulation": "",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "サムネイル画像のパス"
+    },
+    {
+      "id": "TAB-006",
+      "table": "videos",
+      "column": "duration",
+      "dataType": "interval",
+      "regulation": "",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "動画の長さ"
+    },
+    {
+      "id": "TAB-007",
+      "table": "videos",
+      "column": "file_size",
+      "dataType": "bigint",
+      "regulation": "",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "動画ファイルのサイズ（バイト）"
+    },
+    {
+      "id": "TAB-008",
+      "table": "videos",
+      "column": "view_count",
+      "dataType": "integer",
+      "regulation": "DEFAULT 0",
+      "defaultValue": "0",
+      "foreignKey": "",
+      "description": "動画の視聴回数"
+    },
+    {
+      "id": "TAB-009",
+      "table": "videos",
+      "column": "upload_date",
+      "dataType": "timestamp with time zone",
+      "regulation": "DEFAULT CURRENT_TIMESTAMP",
+      "defaultValue": "CURRENT_TIMESTAMP",
+      "foreignKey": "",
+      "description": "動画のアップロード日時"
+    },
+    {
+      "id": "TAB-010",
+      "table": "videos",
+      "column": "last_viewed_at",
+      "dataType": "timestamp with time zone",
+      "regulation": "",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "最後に視聴された日時"
+    },
+    {
+      "id": "TAB-011",
+      "table": "tags",
+      "column": "id",
+      "dataType": "uuid",
+      "regulation": "PRIMARY KEY",
+      "defaultValue": "gen_random_uuid()",
+      "foreignKey": "",
+      "description": "タグの一意識別子"
+    },
+    {
+      "id": "TAB-012",
+      "table": "tags",
+      "column": "name",
+      "dataType": "text",
+      "regulation": "NOT NULL UNIQUE",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "タグの名前"
+    },
+    {
+      "id": "TAB-013",
+      "table": "video_tags",
+      "column": "video_id",
+      "dataType": "uuid",
+      "regulation": "NOT NULL",
+      "defaultValue": "",
+      "foreignKey": "videos(id)",
+      "description": "動画の外部キー"
+    },
+    {
+      "id": "TAB-014",
+      "table": "video_tags",
+      "column": "tag_id",
+      "dataType": "uuid",
+      "regulation": "NOT NULL",
+      "defaultValue": "",
+      "foreignKey": "tags(id)",
+      "description": "タグの外部キー"
+    },
+    {
+      "id": "TAB-015",
+      "table": "video_tags",
+      "column": "id",
+      "dataType": "uuid",
+      "regulation": "PRIMARY KEY",
+      "defaultValue": "gen_random_uuid()",
+      "foreignKey": "",
+      "description": "動画タグ関連付けの一意識別子"
+    },
+    {
+      "id": "TAB-016",
+      "table": "users",
+      "column": "id",
+      "dataType": "uuid",
+      "regulation": "PRIMARY KEY",
+      "defaultValue": "gen_random_uuid()",
+      "foreignKey": "",
+      "description": "ユーザーの一意識別子"
+    },
+    {
+      "id": "TAB-017",
+      "table": "users",
+      "column": "username",
+      "dataType": "text",
+      "regulation": "NOT NULL UNIQUE",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "ユーザー名"
+    },
+    {
+      "id": "TAB-018",
+      "table": "users",
+      "column": "email",
+      "dataType": "text",
+      "regulation": "NOT NULL UNIQUE",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "ユーザーのメールアドレス"
+    },
+    {
+      "id": "TAB-019",
+      "table": "users",
+      "column": "password_hash",
+      "dataType": "text",
+      "regulation": "NOT NULL",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "ハッシュ化されたパスワード"
+    },
+    {
+      "id": "TAB-020",
+      "table": "users",
+      "column": "role",
+      "dataType": "text",
+      "regulation": "NOT NULL",
+      "defaultValue": "'user'",
+      "foreignKey": "",
+      "description": "ユーザーの役割（例：'user' 'admin'）"
+    },
+    {
+      "id": "TAB-021",
+      "table": "users",
+      "column": "created_at",
+      "dataType": "timestamp with time zone",
+      "regulation": "DEFAULT CURRENT_TIMESTAMP",
+      "defaultValue": "CURRENT_TIMESTAMP",
+      "foreignKey": "",
+      "description": "ユーザーアカウント作成日時"
+    },
+    {
+      "id": "TAB-022",
+      "table": "users",
+      "column": "last_login",
+      "dataType": "timestamp with time zone",
+      "regulation": "",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "最後のログイン日時"
+    },
+    {
+      "id": "TAB-023",
+      "table": "view_history",
+      "column": "id",
+      "dataType": "uuid",
+      "regulation": "PRIMARY KEY",
+      "defaultValue": "gen_random_uuid()",
+      "foreignKey": "",
+      "description": "視聴履歴の一意識別子"
+    },
+    {
+      "id": "TAB-024",
+      "table": "view_history",
+      "column": "user_id",
+      "dataType": "uuid",
+      "regulation": "NOT NULL",
+      "defaultValue": "",
+      "foreignKey": "users(id)",
+      "description": "視聴したユーザーの外部キー"
+    },
+    {
+      "id": "TAB-025",
+      "table": "view_history",
+      "column": "video_id",
+      "dataType": "uuid",
+      "regulation": "NOT NULL",
+      "defaultValue": "",
+      "foreignKey": "videos(id)",
+      "description": "視聴された動画の外部キー"
+    },
+    {
+      "id": "TAB-026",
+      "table": "view_history",
+      "column": "viewed_at",
+      "dataType": "timestamp with time zone",
+      "regulation": "DEFAULT CURRENT_TIMESTAMP",
+      "defaultValue": "CURRENT_TIMESTAMP",
+      "foreignKey": "",
+      "description": "視聴した日時"
+    },
+    {
+      "id": "TAB-027",
+      "table": "system_logs",
+      "column": "id",
+      "dataType": "uuid",
+      "regulation": "PRIMARY KEY",
+      "defaultValue": "gen_random_uuid()",
+      "foreignKey": "",
+      "description": "システムログの一意識別子"
+    },
+    {
+      "id": "TAB-028",
+      "table": "system_logs",
+      "column": "event_type",
+      "dataType": "text",
+      "regulation": "NOT NULL",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "ログイベントの種類"
+    },
+    {
+      "id": "TAB-029",
+      "table": "system_logs",
+      "column": "event_description",
+      "dataType": "text",
+      "regulation": "",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "ログイベントの詳細説明"
+    },
+    {
+      "id": "TAB-030",
+      "table": "system_logs",
+      "column": "created_at",
+      "dataType": "timestamp with time zone",
+      "regulation": "DEFAULT CURRENT_TIMESTAMP",
+      "defaultValue": "CURRENT_TIMESTAMP",
+      "foreignKey": "",
+      "description": "ログが記録された日時"
+    },
+    {
+      "id": "TAB-031",
+      "table": "system_logs",
+      "column": "user_id",
+      "dataType": "uuid",
+      "regulation": "",
+      "defaultValue": "",
+      "foreignKey": "users(id)",
+      "description": "関連するユーザーの外部キー（該当する場合）"
+    },
+    {
+      "id": "TAB-032",
+      "table": "system_logs",
+      "column": "ip_address",
+      "dataType": "inet",
+      "regulation": "",
+      "defaultValue": "",
+      "foreignKey": "",
+      "description": "イベントが発生したIPアドレス"
+    }
+  ]
+}

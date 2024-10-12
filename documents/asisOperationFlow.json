@@ -1,0 +1,6 @@
+{
+  "key": "asisOperationFlow",
+  "value": {
+    "mermaid": "graph TD\n    subgraph User\n        A[ユーザー] --> B[ウェブアプリにアクセス]\n        B --> C[動画リストを閲覧]\n        C --> D[ソート条件を選択]\n        C --> E[動画を選択]\n        E --> F[動画を視聴]\n    end\n\n    subgraph System\n        G[動画メタデータをDB化]\n        H[動画リストを表示]\n        I[ソート機能を適用]\n        J[動画ビューワーを表示]\n        K[視聴回数をカウント]\n        L[視聴データをDB更新]\n    end\n\n    subgraph Azure Blob Storage\n        M[動画ファイルを保存]\n    end\n\n    A --> G\n    G --> H\n    D --> I\n    I --> H\n    E --> J\n    F --> K\n    K --> L\n    M --> G\n    M --> J"
+  }
+}

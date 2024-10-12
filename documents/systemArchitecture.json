@@ -1,0 +1,6 @@
+{
+  "key": "systemArchitecture",
+  "value": {
+    "mermaid": "graph TD\n    subgraph Frontend\n        A[社内スタッフUI]\n        B[システム管理者UI]\n    end\n\n    subgraph Backend\n        C[動画管理システム]\n        D[認証システム]\n        E[ストリーミングサーバー]\n        F[CDN管理]\n        G[バックアップシステム]\n    end\n\n    subgraph Database\n        H[(メタデータDB)]\n        I[(ユーザーDB)]\n        J[(使用状況DB)]\n    end\n\n    subgraph External Services\n        K[Azure Blob Storage]\n        L[Azure CDN]\n        M[社内認証システム]\n    end\n\n    A --> C\n    B --> C\n    C --> D\n    C --> E\n    C --> F\n    C --> G\n    C --> H\n    C --> I\n    C --> J\n    D --> M\n    E --> K\n    F --> L\n    G --> K"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "key": "erDiagram",
+  "value": {
+    "mermaid": "erDiagram\n    VIDEOS {\n        UUID id PK\n        TEXT title\n        TEXT description\n        TEXT file_path\n        TEXT thumbnail_path\n        INTERVAL duration\n        BIGINT file_size\n        INTEGER view_count\n        TIMESTAMP upload_date\n        TIMESTAMP last_viewed_at\n    }\n    TAGS {\n        UUID id PK\n        TEXT name\n    }\n    VIDEO_TAGS {\n        UUID id PK\n        UUID video_id FK\n        UUID tag_id FK\n    }\n    USERS {\n        UUID id PK\n        TEXT username\n        TEXT email\n        TEXT password_hash\n        TEXT role\n        TIMESTAMP created_at\n        TIMESTAMP last_login\n    }\n    VIEW_HISTORY {\n        UUID id PK\n        UUID user_id FK\n        UUID video_id FK\n        TIMESTAMP viewed_at\n    }\n    SYSTEM_LOGS {\n        UUID id PK\n        TEXT event_type\n        TEXT event_description\n        TIMESTAMP created_at\n        UUID user_id FK\n        INET ip_address\n    }\n\n    VIDEOS ||--o{ VIDEO_TAGS : \"動画にタグ付け\"\n    TAGS ||--o{ VIDEO_TAGS : \"タグが動画に関連付け\"\n    USERS ||--o{ VIEW_HISTORY : \"ユーザーが視聴履歴を持つ\"\n    VIDEOS ||--o{ VIEW_HISTORY : \"動画が視聴履歴を持つ\"\n    USERS ||--o{ SYSTEM_LOGS : \"ユーザーに関連するログ\"\n"
+  }
+}
